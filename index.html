@@ -19,6 +19,16 @@
   No
 </button>
 
+<button onclick="ThirdanswerYes()" 
+        style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+  Yes
+</button>
+
+<button onclick="fourthanswerYes()" 
+        style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+  Yes
+</button>
+
 <script>
 function answerYes() {
   document.getElementById("question").innerText = "Are you sure? ❤️";
@@ -26,9 +36,29 @@ function answerYes() {
 }
 
 function answerNo() {
-  document.getElementById("question").innerText = "Try Again";
+  document.getElementById("question").innerText = "Try Again...Do you love me?";
   document.getElementById("mainImage").src = "mad.gif";
 }
+
+function SecondanswerYes() {
+  document.getElementById("question").innerText = "Of course you are...Look at my ASS!";
+  document.getElementById("mainImage").src = "happy.gif";
+}
+function ThirdanswerYes() {
+  document.getElementById("question").innerText = "Really?";
+  document.getElementById("mainImage").src = "sad.gif";
+
+function fourthdanswerYes() {
+  document.getElementById("question").innerText = "RUN";
+  document.getElementById("mainImage").src = "RUN.jpg";
+}
+
+function fifthanswerYes() {
+  document.getElementById("question").innerText = "wrong";
+  document.getElementById("mainImage").src = "wrong.gif";
+}
+
+   
 </script>
 
 </body>

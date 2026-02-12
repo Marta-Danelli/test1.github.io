@@ -28,37 +28,37 @@ const questions = {
     text: "Do you love me?",
     image: "cute_cat.gif",
     yes: "q2",
-    no: "retry"
-  },
-  retry: {
-    text: "Try again... Do you love me?",
-    image: "mad.gif",
-    yes: "q2",
-    no: "angry"
+    no: "q3"
   },
   q2: {
     text: "Are you sure?",
     image: "happy.gif",
-    yes: "q3",
-    no: "q4"
+    yes: "q4",
+    no: "q5"
   },
   q3: {
-    text: "Of course you love me! ❤️",
-    image: "happy_cat.gif",
-  },
-  angry: {
-    text: "Are you reaaaaaally sure?",
-    image: "sad.gif",
-    yes: "q5",
-    no: "q3"
+    text: "Try again... Do you love me?",
+    image: "mad.gif",
+    yes: "q2",
+    no: "q6"
   },
   q4: {
-    text: "WRONG ANSWER",
-    image: "wrong.gif",
+    text: "OF COURSE YOU LOVE ME! I'M AMAZING!",
+    image: "knit.jpg",
+    yes= null,
+    no= null  
   },
   q5: {
+    text: "WRONG ANSWER",
+    image: "wrong.gif",
+    yes= null,
+    no= null  
+  },
+  q6: {
     text: "RUN",
     image: "RUN.jpg",
+    yes= null,
+    no= null  
   }
 };
 
@@ -66,7 +66,15 @@ function loadQuestion() {
   const q = questions[currentQuestion];
   document.getElementById("question").innerText = q.text;
   document.getElementById("mainImage").src = q.image;
+
+  // Hide buttons if this is the last question
+  if (q.yes === null && q.no === null) {
+    document.getElementById("buttons").style.display = "none";
+  } else {
+    document.getElementById("buttons").style.display = "block";
+  }
 }
+
 
 function choose(answer) {
   const next = questions[currentQuestion][answer];

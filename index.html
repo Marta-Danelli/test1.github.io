@@ -32,13 +32,13 @@ const questions = {
   },
   retry: {
     text: "Try again... Do you love me? 😼",
-    image: "sad_cat.gif",
+    image: "mad.gif",
     yes: "q2",
     no: "angry"
   },
   q2: {
-    text: "Are you sure? 😏",
-    image: "thinking_cat.gif",
+    text: "Are you sure?",
+    image: "happy.gif",
     yes: "q3",
     no: "q4"
   },
@@ -49,14 +49,20 @@ const questions = {
     no: null
   },
   angry: {
-    text: "RUN",
-    image: "RUN.jpg",
-    yes: null,
-    no: null
+    text: "Are you reaaaaaally sure?",
+    image: "sad.gif",
+    yes: "q5",
+    no: "q3"
   },
   q4: {
     text: "WRONG ANSWER",
     image: "wrong.gif",
+    yes: null,
+    no: null
+  },
+  q5: {
+    text: "RUN",
+    image: "RUN.jpg",
     yes: null,
     no: null
   }

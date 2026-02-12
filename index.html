@@ -2,63 +2,83 @@
 <html>
 <body style="background-color: powderblue; text-align: center;">
 
-<h1 id="question">Do you love me?</h1>
+<h1 id="question"></h1>
 
-<img id="mainImage" src="cute_cat.gif"
+<img id="mainImage"
      style="width: 250px; margin: 20px 0; border-radius: 10px;">
 
 <br>
 
-<button onclick="answerYes()" 
+<button onclick="choose('yes')" 
         style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px;">
   Yes
 </button>
 
-<button onclick="answerNo()" 
+<button onclick="choose('no')" 
         style="background-color: red; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
   No
 </button>
 
-<button onclick="ThirdanswerYes()" 
-        style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
-  Yes
-</button>
-
-<button onclick="fourthanswerYes()" 
-        style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
-  Yes
-</button>
-
 <script>
-function answerYes() {
-  document.getElementById("question").innerText = "Are you sure? ❤️";
-  document.getElementById("mainImage").src = "happy.gif";
+
+let currentQuestion = "q1";
+
+const questions = {
+  q1: {
+    text: "Do you love me?",
+    image: "cute_cat.gif",
+    yes: "q2",
+    no: "retry"
+  },
+  retry: {
+    text: "Try again... Do you love me? 😼",
+    image: "sad_cat.gif",
+    yes: "q2",
+    no: "angry"
+  },
+  q2: {
+    text: "Are you sure? 😏",
+    image: "thinking_cat.gif",
+    yes: "q3",
+    no: "q4"
+  },
+  q3: {
+    text: "Of course you love me! ❤️",
+    image: "happy_cat.gif",
+    yes: null,
+    no: null
+  },
+  angry: {
+    text: "RUN",
+    image: "RUN.jpg",
+    yes: null,
+    no: null
+  },
+  q4: {
+    text: "WRONG ANSWER",
+    image: "wrong.gif",
+    yes: null,
+    no: null
+  }
+};
+
+function loadQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.text;
+  document.getElementById("mainImage").src = q.image;
 }
 
-function answerNo() {
-  document.getElementById("question").innerText = "Try Again...Do you love me?";
-  document.getElementById("mainImage").src = "mad.gif";
+function choose(answer) {
+  const next = questions[currentQuestion][answer];
+  
+  if (next) {
+    currentQuestion = next;
+    loadQuestion();
+  }
 }
 
-function SecondanswerYes() {
-  document.getElementById("question").innerText = "Of course you are...Look at my ASS!";
-  document.getElementById("mainImage").src = "happy.gif";
-}
-function ThirdanswerYes() {
-  document.getElementById("question").innerText = "Really?";
-  document.getElementById("mainImage").src = "sad.gif";
+loadQuestion();
 
-function fourthdanswerYes() {
-  document.getElementById("question").innerText = "RUN";
-  document.getElementById("mainImage").src = "RUN.jpg";
-}
-
-function fifthanswerYes() {
-  document.getElementById("question").innerText = "wrong";
-  document.getElementById("mainImage").src = "wrong.gif";
-}
-
-   
 </script>
 
 </body>

@@ -39,37 +39,65 @@ const questions = {
     text: "Do you love me?",
     image: "cute_cat.gif",
     yes: "q2",
-    no: "q3"
+    no: "q3",
+    start: null,
+    next: null
   },
   q2: {
     text: "Are you sure?",
     image: "happy.gif",
     yes: "q4",
-    no: "q5"
+    no: "q5",
+    start: null,
+    next: null
   },
   q3: {
     text: "Try again... Do you love me?",
     image: "mad.gif",
     yes: "q2",
-    no: "q6"
+    no: "q6",
+    start: null,
+    next: null
   },
   q4: {
     text: "OF COURSE YOU LOVE ME! I'M AMAZING!",
     image: "knit.jpg",
     yes: null,
-    no: null  
+    no: null,
+    start: null,
+    next: "q7"
   },
   q5: {
     text: "WRONG ANSWER",
     image: "wrong.gif",
     yes: null,
-    no: null  
+    no: null,
+    start: "q1",
+    next: null
   },
   q6: {
     text: "RUN",
     image: "RUN.jpg",
     yes: null,
-    no: null  
+    no: null,
+    start: "q1",
+    next: null
+  },
+  q7: {
+    text: "Do you wanna know what I love about you?",
+    image: "",
+    yes: "q8",
+    no: "q9",
+    start: null,
+    next: null
+  },
+  q8: {
+    text: "I love you hugs  ",
+    image: "",
+    yes: "q8",
+    no: "q9",
+    start: null,
+    next: null
   }
 };
 
@@ -79,7 +107,7 @@ function loadQuestion() {
   document.getElementById("mainImage").src = q.image;
 
   // Hide buttons if this is the last question
-  if (q.yes === null && q.no === null) {
+  if (q.yes === null && q.no === null && q.start === null && q.next === null) {
     document.getElementById("buttons").style.display = "none";
   } else {
     document.getElementById("buttons").style.display = "block";

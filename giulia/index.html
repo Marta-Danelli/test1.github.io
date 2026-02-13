@@ -1,1 +1,78 @@
 
+<!DOCTYPE html>
+<html>
+<body style="background-color: green; text-align: center; font-family: Arial;">
+
+<h1 id="question"></h1>
+
+<img id="mainImage"
+     style="width: 250px; margin: 20px 0; border-radius: 10px;">
+
+<br>
+
+<div id="buttons">
+  <button id="cactusBtn" onclick="choose('cactus')"> Cactus</button>
+  <button id="monsteraBtn" onclick="choose('monstera')"> Monstera</button>
+  <button id="flowerBtn" onclick="choose('flower')"> Fiore</button>
+</div>
+
+<script>
+
+let currentQuestion = "q1";
+
+const questions = {
+  q1: {
+    text: "Benvenuta! \nScegli la tua pianta:",
+    image: "plants_intro.jpg",
+    cactus: "qCactus",
+    monstera: "qMonstera",
+    flower: "qFlower"
+  },
+
+  qCactus: {
+    text: "Hai scelto il cactus 🌵\nForte e indipendente, proprio come te.",
+    image: "cactus.jpg"
+  },
+
+  qMonstera: {
+    text: "Hai scelto la monstera 🌿\nElegante e piena di energia.",
+    image: "monstera.jpg"
+  },
+
+  qFlower: {
+    text: "Hai scelto il fiore 🌸\nDelicata ma capace di illuminare tutto.",
+    image: "flower.jpg"
+  }
+};
+
+function loadQuestion() {
+  const q = questions[currentQuestion];
+
+  document.getElementById("question").innerText = q.text;
+  document.getElementById("mainImage").src = q.image || "";
+
+  // Hide all buttons first
+  document.getElementById("cactusBtn").style.display = "none";
+  document.getElementById("monsteraBtn").style.display = "none";
+  document.getElementById("flowerBtn").style.display = "none";
+
+  // Show only available choices
+  if (q.cactus) document.getElementById("cactusBtn").style.display = "inline-block";
+  if (q.monstera) document.getElementById("monsteraBtn").style.display = "inline-block";
+  if (q.flower) document.getElementById("flowerBtn").style.display = "inline-block";
+}
+
+function choose(answer) {
+  const next = questions[currentQuestion][answer];
+  if (next) {
+    currentQuestion = next;
+    loadQuestion();
+  }
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>

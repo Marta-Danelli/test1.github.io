@@ -1,1 +1,186 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: powderblue; text-align: center;">
 
+<h1 id="question"></h1>
+
+<img id="mainImage"
+     style="width: 250px; margin: 20px 0; border-radius: 10px;">
+
+<br>
+
+<div id="buttons">
+  <button id="yes" button onclick="choose('yes')" 
+          style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px;">
+    Yes
+  </button>
+
+  <button id="no" button onclick="choose('no')" 
+          style="background-color: red; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+    No
+  </button>
+
+<button id="start" button onclick="choose('start')" 
+          style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+    Start Again
+  </button>
+     
+<button id="next" button onclick="choose('next')" 
+          style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+    Next
+  </button>
+</div>
+<script>
+
+let currentQuestion = "q1";
+
+const questions = {
+  q1: {
+    text: "Do you love me?",
+    image: "cute_cat.gif",
+    yes: "q2",
+    no: "q3",
+    start: null,
+    next: null
+  },
+  q2: {
+    text: "Are you sure?",
+    image: "happy.gif",
+    yes: "q4",
+    no: "q5",
+    start: null,
+    next: null
+  },
+  q3: {
+    text: "Try again... Do you love me?",
+    image: "mad.gif",
+    yes: "q2",
+    no: "q6",
+    start: null,
+    next: null
+  },
+  q4: {
+    text: "OF COURSE YOU LOVE ME! I'M AMAZING!",
+    image: "amazing.png",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q7"
+  },
+  q5: {
+    text: "WRONG ANSWER",
+    image: "wrong.gif",
+    yes: null,
+    no: null,
+    start: "q1",
+    next: null
+  },
+  q6: {
+    text: "RUN",
+    image: "RUN.jpg",
+    yes: null,
+    no: null,
+    start: "q1",
+    next: null
+  },
+  q7: {
+    text: "Do you wanna know what I love about you?",
+    image: "hat.jpg",
+    yes: "q8",
+    no: "q9",
+    start: null,
+    next: null
+  },
+  q8: {
+    text: "I love your hugs...",
+    image: "hug.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q10"
+  },
+  q9: {
+    text: "Seriously?",
+    image: "cry.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q7"
+  },
+  q10: {
+    text: "I love when we spend time together",
+    image: "play.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q11"
+  },
+  q11: {
+    text: "I love when we are fat together",
+    image: "eat.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q12"
+  },
+  q12: {
+    text: "I love when we are silly together",
+    image: "fart.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q13"
+  },
+  q13: {
+    text: "I love when we relax together",
+    image: "knit.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q14"
+  },
+  q14: {
+    text: "but most of all...I LOVE YOU!",
+    image: "kiss.gif",
+    yes: null,
+    no: null,
+    start: "q1",
+    next: null
+  }
+};
+
+function loadQuestion() {
+  const q = questions[currentQuestion];
+
+  document.getElementById("question").innerText = q.text;
+  document.getElementById("mainImage").src = q.image || "";
+
+  // Show or hide each button depending on whether it exists
+  document.getElementById("yes").style.display =
+    q.yes ? "inline-block" : "none";
+
+  document.getElementById("no").style.display =
+    q.no ? "inline-block" : "none";
+
+  document.getElementById("start").style.display =
+    q.start ? "inline-block" : "none";
+
+  document.getElementById("next").style.display =
+    q.next ? "inline-block" : "none";
+}
+
+function choose(answer) {
+  const next = questions[currentQuestion][answer];
+  
+  if (next) {
+    currentQuestion = next;
+    loadQuestion();
+  }
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>

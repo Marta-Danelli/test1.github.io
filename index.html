@@ -103,17 +103,23 @@ const questions = {
 
 function loadQuestion() {
   const q = questions[currentQuestion];
+
   document.getElementById("question").innerText = q.text;
-  document.getElementById("mainImage").src = q.image;
+  document.getElementById("mainImage").src = q.image || "";
 
-  // Hide buttons if this is the last question
-  if (q.yes === null && q.no === null && q.start === null && q.next === null) {
-    document.getElementById("buttons").style.display = "none";
-  } else {
-    document.getElementById("buttons").style.display = "block";
-  }
+  // Show or hide each button depending on whether it exists
+  document.getElementById("yes").style.display =
+    q.yes ? "inline-block" : "none";
+
+  document.getElementById("no").style.display =
+    q.no ? "inline-block" : "none";
+
+  document.getElementById("start").style.display =
+    q.start ? "inline-block" : "none";
+
+  document.getElementById("next").style.display =
+    q.next ? "inline-block" : "none";
 }
-
 
 function choose(answer) {
   const next = questions[currentQuestion][answer];
